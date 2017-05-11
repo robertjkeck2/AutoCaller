@@ -1,0 +1,17 @@
+{% extends "login_layout.html" %}
+{% block content %}
+    <h1>Login</h1>
+    <hr>
+    <div class="default-form">
+    <form action="" method=post value="login">
+    <h2>Please log in to your account:</h2>
+      {{ form.csrf_token }}
+      <div style="width: 40% margin: auto">
+      {{ form.email(placeholder="Email*") }}<br>
+      {{ form.password(placeholder="Password*") }}<br>
+      </div>
+      {{ form.login }}
+      </div>
+    </form>
+    </div>
+{% endblock %}

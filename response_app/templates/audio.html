@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <title>Audio</title>
+    <h1>Upload Audio Files</h1>
+    <hr>
+    <div class="default-form">
+    <h2>Upload audio file (.wav or .mp3):</h2>
+    <form action="" method=post enctype=multipart/form-data>
+	{{ form.csrf_token }}
+	 {{ form.file }}<br>
+	 {{ form.upload }}<br>
+    </form>
+    </div>
+    <div>
+    <hr>
+    <h3>Existing audio files</h3>
+    {% for file in files %}
+       <a href="/play/{{ file }}">{{ file }}</a><br>
+    {% endfor %}
+    </div>
+{% endblock %}

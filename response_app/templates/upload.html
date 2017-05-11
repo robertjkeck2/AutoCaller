@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+    <title>Upload Call List</title>
+    <h1>Upload Call List</h1>
+    <hr>
+    <div style="width: 49%; float: left; margin: auto">
+    <div class="default-form">
+    <h2>Copy/paste formatted CSV below:</h2>
+    <form action="" method="post" value="Enter CSV Data">
+	{{ form.csrf_token }}
+	   {{ form.market }}<br>
+	   {{ form.pasted_data(cols="30", rows="20", placeholder="New row for each number. DO NOT USE COMMAS.\nEx.\n13172130395\n13177213572\n16142748372\netc...") }}<br>
+	   {{ form.add_numbers }}<br>
+    </form>
+    </div>
+    </div>
+    <div style="width: 49%; float: right; margin: auto">
+    <div class="default-form">
+    <h2>Or upload formatted CSV file:</h2>
+    <form action="" method=post enctype=multipart/form-data>
+	{{ upload_form.csrf_token }}
+	 {{ upload_form.file }}<br>
+	 {{ upload_form.upload }}<br>	
+    </form>
+    </div>
+    <p style="text-align: center">File must be CSV with the following format:</p>
+    <table>
+        <tr><th>phone_number</th><th>market</th></tr>
+        <tr><td>13172130395</td><td>Indianapolis</td></tr>
+        <tr><td>13177213572</td><td>Chicago</td></tr>
+	<tr><td>16142748372</td><td>Columbus</td></tr>
+    </table>
+    </div>
+{% endblock %}

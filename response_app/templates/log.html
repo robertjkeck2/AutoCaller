@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Call Log</h1>
+    <hr>
+    <div>
+    <style>
+    table {
+	border-collapse: collapse;
+	width: 100%;
+        border: 1px solid #FF0000;
+    }
+
+    th, tr {
+	border: 1px solid #FF0000;
+	text-align: center;
+	padding: 8px;
+    }
+
+    td {
+	border: 1px solid #FF0000;
+	text-align: center;
+	padding: 8px;
+	background-color: white;
+    }
+
+    </style>
+    <form action="" method="post" name="export">
+    	{{ form.csrf_token }}
+	<div style="width: 20%; float: right">{{ form.export }}</div> 
+    </form>
+    <table>
+    <tr>
+        <th>Phone Number</th><th>Market</th><th>Uploaded By</th><th>Was Called?</th><th>Called Timestamp</th><th>Called By</th><th>Was Texted?</th><th>Texted Timestamp</th><th>Texted By</th>
+    </tr>
+    {% for numbers in phone_numbers %}
+    <tr>
+	<td>{{ numbers.phone_number }}</td><td>{{ numbers.market }}</td><td>{{ numbers.uploaded_by }}</td><td>{{ numbers.was_called }}</td><td>{{ numbers.called_timestamp }}</td><td>{{ numbers.called_by }}</td><td>{{ numbers.was_texted }}</td><td>{{ numbers.texted_timestamp }}</td><td>{{ numbers.texted_by }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    </div>
+    <hr>
+{% endblock %}

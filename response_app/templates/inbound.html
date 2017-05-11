@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<div id="header" style="text-align: center">
+	<h1>Inbound Messages</h1>
+	<hr>
+	</div>
+	<div id="content" style="text-align: center">    
+	  <div style="width: 49%; float:left; margin: auto">
+	    <div class="default-form">
+	    <h2>Add new inbound message:</h2>
+	    <form action="" method="post" name="inbound">
+   	      {{ form.csrf_token }}
+		  {{ form.name(placeholder="Message Name*") }}<br>
+	 	  {{ form.message(placeholder="Message Text*") }}<br>
+	  	  {{ form.url(placeholder="Message URL") }}<br>
+		  {{ form.add_message }}<br>
+	    </form>
+            </div>
+	  </div>
+	  <div style="width: 49%; float:right; margin: auto">
+	    <div class="default-form">
+	     <h2>Edit an inbound message:</h2>
+	      <form action="" method="post" name="edit">
+		{{ edit_form.csrf_token }}
+		    {{ edit_form.id }}<br>
+		    {{ edit_form.name(placeholder="New Message Name*") }}<br>
+		    {{ edit_form.message(placeholder="New Message Text*") }}<br>
+		    {{ edit_form.url(placeholder="New Message URL") }}<br>
+	            {{ edit_form.edit }}
+		</form>
+	   </div>
+	</div>
+	</div>
+        <div style="clear:both">
+	<hr>
+	  <div style="text-align: center; vertical-align: middle">
+	    <h2>Existing messages:</h2>
+	  </div>  
+		<hr>
+	      {% for messages in all_messages %}
+	        <div>
+		  <table id="show_message_form">
+		    <tr><td><b>Message ID:</b></td><td>{{ messages.id }}</td></tr>
+		    <tr><td><b>Name:</b></td><td>{{ messages.name }}</td></tr>
+		    <tr><td><b>Message:</b></td><td>{{ messages.message }}</td></tr>
+		    <tr><td><b>URL:</b></td><td>{{ messages.url }}</td></tr>
+		  </table>
+		</div>
+	</div>
+	<hr>
+	{% endfor %}
+{% endblock %}

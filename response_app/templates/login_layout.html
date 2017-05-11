@@ -1,0 +1,26 @@
+<html>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+    <head>
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>Autocaller</title>
+        {% endif %}
+    </head>
+    <body>
+	{% with messages = get_flashed_messages() %}
+	    {% if messages %}
+		{% for message in messages %}
+		<div class="flash">
+		    {{ message }}<br>
+		</div>
+		{% endfor %}
+	    {% endif %}
+	{% endwith %}	
+	<hr>
+	<div style="text-align: right"> <a href="/register">Register</a> | <a href="/login">Login</a></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
+

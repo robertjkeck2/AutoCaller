@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Make Calls</h1>
+    <hr>
+      <div class="default-form">
+	<h2>Call numbers in market:</h2>
+	  <form action="" method="post" name="call">
+            {{ form.csrf_token }}
+	     <label>Market: </label>{{ form.market }}<br>
+             <label>Message: </label>{{ form.message }}<br>
+	      {{ form.call }}
+	    </p>
+	    </form>
+	</div>
+{% endblock %}
